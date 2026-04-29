@@ -38,7 +38,7 @@ module Database = struct
 
   exception Ip2proxy_exception of string
 
-  let get_api_version = "3.1.0"
+  let get_api_version = "3.2.0"
 
   let load_mesg mesg =
     {
@@ -247,7 +247,7 @@ module Database = struct
     let threat = read_col_string_row meta row db_type threat_position in
     let provider = read_col_string_row meta row db_type provider_position in
     let fraud_score = read_col_string_row meta row db_type fraud_score_position in
-    let is_proxy = if (country_short == "-" || proxy_type == "-") then 0 else if (proxy_type == "DCH" || proxy_type == "SES") then 2 else 1 in
+    let is_proxy = if (country_short == "-" || proxy_type == "-") then 0 else if (proxy_type == "DCH" || proxy_type == "SES" || proxy_type == "AIC") then 2 else 1 in
     {
       country_short = country_short;
       country_long = country_long;
